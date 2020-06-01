@@ -1,0 +1,275 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	
+	<body>
+		<div class="header">
+			<h1 id="title"> Retro shop </h1>
+			
+			<div id="navbar" class="topnav">
+				<a class="active" href="#title">Home</a>
+				<a href="#bigcartbutton">Cart</a>
+				<a href="#contacts">Contact</a>
+				<div id="cartdiv">
+					<p>My cart </p>
+					<p id="cart"> </p>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		
+		
+		<div id="list">
+		</div>
+		
+		<p id="bigcartbutton"> </p>
+		<div id="bigcartdiv">
+			<p id="carttitle">My cart: </p>
+			<p id="bigcart"> </p>
+		</div>
+		
+		
+		<div id="contacts">
+			<p id="contactstitle">Contacts: </p>
+			<p>Email: retroshop@gmail.com </p>
+			<p>Instagram: @Retroshop </p>
+			<p>Facebook: Retro shop </p>
+		</div>
+		
+		
+		
+		<script>
+			
+			
+			var items = [
+			{
+				"id": 0,
+				"title": "Hat",
+				"imageURL": "https://i.imgur.com/HgIzJ0O.png",
+				"description": "A retro hat from 1972 wore by Jim Morrison. Size L",
+				"price": 25.99
+			},
+			{
+				"id": 1,
+				"title": "Guitar",
+				"imageURL": "https://i.imgur.com/1pc347r.png",
+				"description": "Used by Jimi Hendrix in Spain tour 1969. Left-handed.",
+				"price": 7560
+			},
+			{
+				"id": 2,
+				"title": "Headset",
+				"imageURL": "https://i.imgur.com/BU1u53U.png",
+				"description": "Mono/Stereo sound.",
+				"price": 129.99
+			},
+			{
+				"id": 3,
+				"title": "Backpack",
+				"imageURL": "https://i.imgur.com/WOGQ3ll.png",
+				"description": "25 liters travel fake-leather",
+				"price": 59.99
+			},
+			{
+				"id": 4,
+				"title": "Glasses",
+				"imageURL": "https://i.imgur.com/KQssRzO.png",
+				"description": "-3.75 left eye -4.25 right eye. Can you buy glasses like this somewhere else? You cannot.",
+				"price": 158.45
+			},
+			{
+				"id": 5,
+				"title": "Camera",
+				"imageURL": "https://i.imgur.com/hifcDsd.png",
+				"description": "Works only with Kodak Pro-289l films",
+				"price": 46.15
+			},
+			{
+				"id": 6,
+				"title": "Skate",
+				"imageURL": "https://i.imgur.com/KiZi7HQ.png",
+				"description": "Tony Hawks first skate.",
+				"price": 2500
+			},
+			{
+				"id": 7,
+				"title": "Shirt",
+				"imageURL": "https://i.imgur.com/4OZIWFV.png",
+				"description": "Wore by Elvis Presley in Acapulco film.",
+				"price": 756
+			},
+			{
+				"id": 8,
+				"title": "Sneakers",
+				"imageURL": "https://i.imgur.com/4GtCkkJ.png",
+				"description": "Used by Bugs Bunny in Space-Jam",
+				"price": 259.30
+			},
+			{
+				"id": 9,
+				"title": "Shoes",
+				"imageURL": "https://i.imgur.com/uRXDvwK.png",
+				"description": "Only one. Right foot.",
+				"price": 79.99
+			},
+			{
+				"id": 10,
+				"title": "Red Hat",
+				"imageURL": "https://i.imgur.com/qvwxXYY.png",
+				"description": "Outlander's costume. Unique piece!",
+				"price": 250
+			},
+			{
+				"id": 11,
+				"title": "Brown Beanie",
+				"imageURL": "https://i.imgur.com/zZAtqkD.png",
+				"description": "Want to be cool but look like idiot? Buy this hat.",
+				"price": 829.15
+			},
+			{
+				"id": 12,
+				"title": "Blue Jeans",
+				"imageURL": "https://i.imgur.com/PMFkkjS.png",
+				"description": "Blue jeans, white shirt. Walked into the room you know you made my eyes burn",
+				"price": 150.90
+			},
+			{
+				"id": 13,
+				"title": "Brown Pants",
+				"imageURL": "https://i.imgur.com/PmCMb4p.png",
+				"description": "They are so ugly that we give them out for almost nothing",
+				"price": 1.99
+			},
+			{
+				"id": 14,
+				"title": "Radio",
+				"imageURL": "https://i.imgur.com/Xd1YRFS.png",
+				"description": "AM only. Volumne knob broken but works at max volume",
+				"price": 5.99
+			}        
+			];
+		
+			var cart=[];
+		
+			var totalprice=0;
+			var itemcount=0;
+		
+			for (var index=0; index < items.length; index++){
+			
+				let item=items[index];
+				
+				console.log(items[index].title);
+				
+				
+				var mydiv=document.createElement("div");
+				mydiv.setAttribute("id", index+"item");
+				mydiv.setAttribute("class", "yes");
+				document.getElementById("list").appendChild(mydiv);
+				
+				var mytitle=document.createElement("p");
+				mytitle.innerHTML=(items[index].title);
+				mytitle.setAttribute("class", "titletxt");
+				document.getElementById(index+"item").appendChild(mytitle);
+				
+				var pic=document.createElement("img");
+				pic.setAttribute("src", items[index].imageURL );
+				/*pic.setAttribute("class", "yes");*/
+				document.getElementById(index+"item").appendChild(pic);
+				
+				var mydescription=document.createElement("p");
+				mydescription.innerHTML=(items[index].description);
+				mydescription.setAttribute("class", "descriptiontxt");
+				document.getElementById(index+"item").appendChild(mydescription);
+				
+				var myprice=document.createElement("p");
+				myprice.innerHTML=(items[index].price +" €");
+				myprice.setAttribute("class", "myprice");
+				document.getElementById(index+"item").appendChild(myprice);		
+				
+				document.getElementById("cart").innerHTML=" ("+0+") : "+ 0 +" €";
+				document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+				
+				var addbutton=document.createElement("button");
+				addbutton.innerHTML="Add to cart";
+				addbutton.setAttribute("class", "addbutton");
+				addbutton.setAttribute("id", index+"addto");
+				addbutton.addEventListener("click", function(){
+					totalprice=totalprice+ item.price;
+					itemcount=itemcount+1;
+					console.log(totalprice);
+					console.log(itemcount);
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+Math.floor(totalprice*100)/100 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+				});
+				document.getElementById(index+"item").appendChild(addbutton);
+				
+				var removebutton=document.createElement("button");
+				removebutton.innerHTML="Remove from cart";
+				removebutton.setAttribute("class", "removebutton");
+				removebutton.addEventListener("click", function(){
+					totalprice=totalprice- item.price;
+					itemcount=itemcount-1;
+					console.log(totalprice);
+					console.log(itemcount);
+					if(0<totalprice){
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+Math.floor(totalprice*100)/100 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+					}
+					if(0>totalprice){
+					totalprice=0;
+					itemcount=0;
+					
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+Math.floor(totalprice*100)/100 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+					}
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+Math.floor(totalprice*100)/100 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+					/*if (totalprice=0){
+					console.log("0>itemcount");
+					itemcount=0;
+					}*/
+				});
+				document.getElementById(index+"item").appendChild(removebutton);
+				
+				
+				//document.getElementById("cart").appendChild(totalprice);//
+			}
+			
+			
+			
+			
+		</script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$("button").click(function(){
+			$("p").toggle();
+			});
+
+		$("#"+index+"addto").click(function(){
+				$("#"+index+"item").hide();
+				/*$("#tnx").append("Thanks for subscribing!");*/
+				});
+		</script>-->
+	
+		<script>
+		window.onscroll = function() {myFunction()};
+
+		var navbar = document.getElementById("navbar");
+		var sticky = navbar.offsetTop;
+
+		function myFunction() {
+		  if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		  } else {
+			navbar.classList.remove("sticky");
+		  }
+		}
+		</script>
+	
+	<body>
+
+</html>
