@@ -195,6 +195,49 @@
 				
 				var addbutton=document.createElement("button");
 				addbutton.innerHTML="Add to cart";
+				addbutton.setAttribute("id", index+"addtocart");
+				addbutton.setAttribute("class", "addbutton");
+				addbutton.addEventListener("click", function(){
+					
+					itemcount=itemcount+1;
+					
+					document.getElementById(item.id+"removebutton").style.display="block";
+					document.getElementById(item.id+"addtocart").style.display="none";
+					
+					totalprice=totalprice+ item.price;
+					console.log(totalprice);
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+Math.floor(totalprice*100)/100 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+
+				});
+				document.getElementById(index+"item").appendChild(addbutton);
+				console.log(addbutton);
+				var removebutton=document.createElement("button");
+				removebutton.setAttribute("style", "display: none;");
+				removebutton.setAttribute("id", index+"removebutton");
+				removebutton.setAttribute("class", "removebutton");
+				removebutton.innerHTML="Remove wrom cart";
+				removebutton.addEventListener("click", function(){
+				
+					itemcount=itemcount-1;
+					
+					document.getElementById(item.id+"removebutton").style.display="none";
+					document.getElementById(item.id+"addtocart").style.display="block";
+				
+					totalprice=totalprice- item.price;
+					console.log(totalprice);
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+Math.floor(totalprice*100)/100 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+Math.floor(totalprice*100)/100 +" €";
+					
+					if (itemcount==0){
+					console.log("0>totalprice");
+					document.getElementById("cart").innerHTML=" ("+itemcount+") : "+0 +" €";
+					document.getElementById("bigcart").innerHTML="My cart contains ("+itemcount+") items. The total cost is : "+0 +" €";
+					}
+				});
+				document.getElementById(index+"item").appendChild(removebutton);
+				/*var addbutton=document.createElement("button");
+				addbutton.innerHTML="Add to cart";
 				addbutton.setAttribute("class", "addbutton");
 				addbutton.setAttribute("id", index+"addto");
 				addbutton.addEventListener("click", function(){
@@ -232,11 +275,12 @@
 					console.log("0>itemcount");
 					itemcount=0;
 					}*/
-				});
+				/*});
 				document.getElementById(index+"item").appendChild(removebutton);
 				
 				
 				//document.getElementById("cart").appendChild(totalprice);//
+				*/
 			}
 			
 			
